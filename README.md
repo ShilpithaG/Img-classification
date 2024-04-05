@@ -1,1 +1,3 @@
-# Img-classification
+# Image classification
+Overview
+ The master device captures an image. It divides the image into 4 quadrants. Each quadrant is sent to 4 client devices. The main server has the model that trains on MNIST quadrants and generates a trained model which is saved to the client devices. Each client device performs a forward pass using the trained model which gives the confidence values for each class. Hence, confidence value is an array of 10 probabilities and the prediction value is the class that has the highest confidence value. These confidence values are sent to the master device and the master device calculates the final prediction value from the four sets of confidence values. This is calculated by summing the confidence matrix across all the classes (i.e, column-wise matrix operation) and then calculating the maximum value of the resulting array. This result is sent to the main server and it saves the images into the respective class folders.
